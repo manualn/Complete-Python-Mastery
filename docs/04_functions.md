@@ -172,3 +172,59 @@ def multiply(*numbers):
 
 print(multiply(2, 3, 4, 5))
 ``` 
+
+# Xxargs 
+
+In the last lecture, you learned the syntax to pass a variable number of arguments to a function. Now, let's see how to pass a variable number of keyword arguments.
+
+```python
+# 45_xxargs.py
+def save_user(**user):
+    print(user)
+
+save_user(id=1, name="John", age=22)
+```
+
+Instead of passing arbitrary positional arguments, here we pass arbitrary keyword arguments. We get multiple key-value pairs in the output:
+
+```
+{'id': 1, 'name': 'John', 'age': 22}
+```
+
+The object you see in the output is called a dictionary. It's another complex data structure in Python.
+
+When double asterisks (`**`) are used, you can pass multiple key-value pairs as arguments to the function. 
+
+# Scope
+
+Scope is a very important concept in programming. It refers to the region of the code where a variable is defined and accessible.
+
+For example:
+
+```python
+# 46_scope.py
+def greet(name):
+    message = "a"
+```
+
+In the above example, you have the `message` variable. The scope of this variable is limited to the `greet` function, and it only exists inside the function. If you try to print the variable outside the function, it will show an error. The scope of `name` and `message` variables is the `greet` function.
+
+These variables are referred to as local variables in this function. Local variables have a very short lifetime. When we run the `greet` function with any name given, the Python interpreter will allocate some memory, and the variables `name` and `message` will reference those memory locations. When we finish executing the `greet` function, eventually these variables get garbage collected, and Python releases the memory.
+
+We also have global variables. A global variable can be used anywhere in the file, and it stays in memory for a longer period.
+
+```python
+message = "a"  # global variable
+
+def greet(name):
+    global message
+    message = "b"
+
+greet("Mosh")
+print(message)
+# Output will be: b
+```
+
+In this example, we use the `global` keyword inside the function to modify the global variable `message`.
+
+> Note: Global variables are generally discouraged. They might have side effects in other functions. Avoid them as much as you can.
