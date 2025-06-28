@@ -1,9 +1,7 @@
-# Introduction
-Time range: 0:00 - 0:56  
+# Introduction 
 Python is used for AI, Machine learning, Web development and Automation. This is a comprehensive, easy to follow, well organized and practical course. No prior knowledge is required. Step by step explanation of simple terms is included in this course. Mosh hamedani, a software engineer with over 20 years of experience is teaching this through his youtube channel.
 
-# What is python 
-Time range: 0:56 - 4:11  
+# What is python   
 It is the most popular programming language among software developers, mathematicians, data analysts, scientists, accountants, network engineers and even kids. Python solves complex problems in less time with fewer lines of code. Many huge companies like google, spotify, dropbox and facebook use this language. Average salary of python developer in US was over $115000 in 2018. Python has been around over 20 years.  
 There are two versions of python:
 1. Python 2 - legacy version of python
@@ -11,8 +9,7 @@ There are two versions of python:
 
 Python 3 is taught in this video
 
-# Installing Python
-Time range: 04:11 - 05:36  
+# Installing Python 
 Head over to python.org in your browser and under downloads you can download latest versions. Latest version is python 3.13 during this video. Before click install make sure to check the bow saying "Add python.exe to PATH".
 
 Step 1
@@ -28,7 +25,6 @@ Step 4
 ![syntax demo](/images/03_installing_screenshot4.png)
 
 # Python Intepreter
-Time range: 05:36 - 07:30
 
 ![syntax demo](/images/04_python_intepreter_terminal.png)
 
@@ -37,8 +33,7 @@ We can write python code in a file and give it to this intepreter and it execute
 
 Syntax means grammar.In the last example the expression is not complete and grammar is not right. 
 
-# Code Editor
-Time stamp: 07:30 - 08:49  
+# Code Editor  
 For writing python code there are two options: 
 1. Code editor
 2. IDE - Integrated Development Environment
