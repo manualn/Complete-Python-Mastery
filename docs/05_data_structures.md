@@ -675,3 +675,209 @@ Comprehensions for tuples: change curly brackets into parentheses:
 values = tuple(x * 2 for x in range(5))
 print(values)
 ```
+
+# Generator Expressions
+
+Generator expressions provide a memory-efficient way to work with large data sets or infinite streams of data. Unlike list comprehensions, which generate and store all items in memory, generator expressions generate items on the fly, yielding one value at a time as you iterate over them.
+
+## List Comprehension Example
+
+```python
+# 69_generator_expressions.py
+values = [x * 2 for x in range(10)]
+for x in values:
+    print(x)
+```
+
+When you run this program, the output will be even numbers from 0 to 18. However, all values are stored in memory at once.
+
+## Why Use Generators?
+
+If you're working with large data sets or infinite streams of data, storing all values in memory can be inefficient or even impossible. In such situations, you can use generator objects.
+
+- Generator objects are iterable just like lists. On each iteration, they generate (yield) a new value.
+- They don't store all the values in memory; instead, they generate a new value in each iteration.
+
+## Creating a Generator Expression
+
+To change a list comprehension to a generator expression, replace the square brackets with parentheses:
+
+```python
+# 69_generator_expressions.py
+values = (x * 2 for x in range(10))
+for x in values:
+    print(x)
+```
+
+## Memory Usage Comparison
+
+You can compare the memory usage of a generator expression and a list comprehension using the `getsizeof` function from the `sys` module:
+
+```python
+# 69_generator_expressions.py
+
+from sys import getsizeof
+
+# Generator expression
+values = (x * 2 for x in range(100000))
+print("gen:", getsizeof(values))
+
+# List comprehension
+values = [x * 2 for x in range(100000)]
+print("list:", getsizeof(values))
+```
+
+If you use a list comprehension here, you would end up with a list of 100,000 items, which takes much more memory compared to a generator object (which only takes about 120 bytes).
+
+## Summary
+
+- Use generator expressions when you need to iterate over large or infinite data sets without storing all values in memory.
+- Use list comprehensions when you need to access all items multiple times or require random access.
+
+# Unpacking Operator
+
+Here you are going to study how the unpacking operator works.
+
+For example:
+
+```python
+# 70_unpacking_operator.py
+numbers = [1, 2, 3]
+print(numbers)
+```
+The output will be:
+```
+[1, 2, 3]
+```
+
+If you want each number separately without brackets, you can use the unpacking operator:
+
+```python
+# 70_unpacking_operator.py
+numbers = [1, 2, 3]
+print(*numbers)
+```
+The output will be:
+```
+1 2 3
+```
+
+Another example:
+
+```python
+# 70_unpacking_operator.py
+values = list(range(5))
+print(values)
+```
+The output will be:
+```
+[0, 1, 2, 3, 4]
+```
+
+In the above, we can use the unpacking operator instead of `list`:
+
+```python
+# 70_unpacking_operator.py
+values = [*range(5), *"Hello"]
+print(values)
+```
+The output will be:
+```
+[0, 1, 2, 3, 4, 'H', 'e', 'l', 'l', 'o']
+```
+
+Using this operator, we can combine multiple lists:
+
+```python
+# 70_unpacking_operator.py
+first = [1, 2]
+second = [3]
+values = [*first, "a", *second]
+print(values)
+```
+The output will be:
+```
+[1, 2, 'a', 3]
+```
+
+## Unpacking Dictionaries
+
+You can also use the unpacking operator with dictionaries:
+
+```python
+# 70_unpacking_operator.py
+first = {"x": 1}
+second = {"x": 10, "y": 2}
+combined = {**first, **second, "z": 1}
+print(combined)
+```
+The output will be:
+```
+{'x': 10, 'y': 2, 'z': 1}
+```
+
+We can use unpacking operators `*` and `**` to take out individual values in any operation.
+
+
+# Exercises
+
+Here is the question: count the frequency of each character in a string.
+
+```python
+# 71_exercises.py
+sentence = "This is a common interview question"
+
+char_frequency = {}
+for char in sentence:
+    if char in char_frequency:
+        char_frequency[char] += 1
+    else:
+        char_frequency[char] = 1
+print(char_frequency)
+```
+
+This code will output a dictionary where the keys are characters and the values are the number of times each character appears in the sentence.
+
+## Better Way to Print the Dictionary
+
+When the dictionary is large or you want a more readable output, you can use the `pprint` module (pretty-print) to display the dictionary in a cleaner format:
+
+```python
+# 71_exercises.py
+from pprint import pprint
+sentence = "This is a common interview question"
+
+char_frequency = {}
+for char in sentence:
+    if char in char_frequency:
+        char_frequency[char] += 1
+    else:
+        char_frequency[char] = 1
+pprint(char_frequency, width=1)
+```
+
+The `pprint` function prints the dictionary in a more readable, nicely formatted way, especially when the dictionary is large or has complex data.
+
+Next step is to sort this dictionary by frequency of characters. Here we take out each key value pair and convert it into tuple.
+
+```python
+# 71_exercises.py
+from pprint import pprint
+sentence = "This is a common interview question"
+
+char_frequency = {}
+for char in sentence:
+    if char in char_frequency:
+        char_frequency[char] += 1
+    else:
+        char_frequency[char] = 1
+
+# Sort the dictionary by frequency (value)
+print(sorted(char_frequency.items(), key=lambda kv: kv[1]))
+```
+
+### Output
+
+```
+[('h', 1), ('v', 1), ('T', 1), ('q', 1), ('u', 1), ('w', 1), ('m', 2), ('n', 2), ('o', 2), ('s', 3), ('i', 3), (' ', 5), ('t', 3), ('e', 4), ('c', 2), ('a', 2), ('r', 2)]
+```
