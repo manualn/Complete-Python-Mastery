@@ -230,6 +230,35 @@ In this example, we use the `global` keyword inside the function to modify the g
 
 > Note: Global variables are generally discouraged. They might have side effects in other functions. Avoid them as much as you can.
 
+# Debugging
+
+Here you are going to study how to find and fix bugs in a program. Let's add a couple of statements after the function in the previous code:
+
+```python
+# 47_debugging.py
+def multiply(*numbers):
+    total = 1
+    for number in numbers:
+        total *= number
+    # return total  # (Suppose this line is commented out by mistake)
+
+print("start")
+multiply(1, 2, 3)
+```
+
+When you run this program, instead of 6 you get 1. So debugging techniques are used to find and fix this bug.
+
+## Debugging in VS Code
+
+- Open the debug panel.
+- Select a debugging configuration (e.g., Python, Django, etc.).
+- To start debugging, first add a breakpoint by pressing F9. This will run the application up to this point.
+- To execute one statement at a time, use F10.
+- Use Shift + F11 to step out of the function.
+
+Debugging is an essential skill to find and fix bugs in your code efficiently.
+
+
 # VS Code Tricks (Windows)
 
 - To move the cursor from the beginning to the end of the line: simply press the End key.
@@ -273,32 +302,4 @@ def fizz_buzz(input):
 
 print(fizz_buzz(3))
 ```
-
-# Debugging
-
-Here you are going to study how to find and fix bugs in a program. Let's add a couple of statements after the function in the previous code:
-
-```python
-# 47_debugging.py
-def multiply(*numbers):
-    total = 1
-    for number in numbers:
-        total *= number
-    # return total  # (Suppose this line is commented out by mistake)
-
-print("start")
-multiply(1, 2, 3)
-```
-
-When you run this program, instead of 6 you get 1. So debugging techniques are used to find and fix this bug.
-
-## Debugging in VS Code
-
-- Open the debug panel.
-- Select a debugging configuration (e.g., Python, Django, etc.).
-- To start debugging, first add a breakpoint by pressing F9. This will run the application up to this point.
-- To execute one statement at a time, use F10.
-- Use Shift + F11 to step out of the function.
-
-Debugging is an essential skill to find and fix bugs in your code efficiently.
 
