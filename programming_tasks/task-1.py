@@ -10,11 +10,13 @@ elif (operator == "-"):
 elif (operator == "*"):
     result = first_number * second_number
 elif (operator == "/"):
-    result = first_number / second_number
-    
+    try:
+        result = first_number / second_number
+    except(ZeroDivisionError):
+        print("Cannot be divided by zero")
+
 else:
     print("invalid operator")
-
 
 
 if result != None:
