@@ -12,6 +12,6 @@ for i in range(l):
         break
     
 if (palindrome == True):
-    print("x is a palindrome")
+    print(f"{x} is a palindrome")
 else:
-    print("x is not a palindrome")
+    print(f"{x} is not a palindrome")
