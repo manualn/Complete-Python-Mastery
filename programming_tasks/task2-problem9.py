@@ -16,8 +16,6 @@ for ch in input_str:
         # If not a comma, add the character to the current number string
         current += ch
 
-
-# Add the last number after the loop (if it's not empty)
 if current != "":
     values.append(int(current))
 
