@@ -1,8 +1,8 @@
 #ALGORITHM
 # 1)Start
-# 2)Create an empty list named variables
-# 3)start with a for loop to input 5 numbers
-# 4)Add these numbers into the empty list words
+# 2)Create an empty list named words
+# 3)start with a for loop to input 5 words
+# 4)Add these words into the empty list words
 # 5)Define the function named longest_word_length that takes the 
 # words list as input
 # 6)Inside the function, use the max() function with key=len to 
