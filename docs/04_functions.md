@@ -172,3 +172,135 @@ def multiply(*numbers):
 
 print(multiply(2, 3, 4, 5))
 ``` 
+
+# Xxargs 
+
+In the last lecture, you learned the syntax to pass a variable number of arguments to a function. Now, let's see how to pass a variable number of keyword arguments.
+
+```python
+# 45_xxargs.py
+def save_user(**user):
+    print(user)
+
+save_user(id=1, name="John", age=22)
+```
+
+Instead of passing arbitrary positional arguments, here we pass arbitrary keyword arguments. We get multiple key-value pairs in the output:
+
+```
+{'id': 1, 'name': 'John', 'age': 22}
+```
+
+The object you see in the output is called a dictionary. It's another complex data structure in Python.
+
+When double asterisks (`**`) are used, you can pass multiple key-value pairs as arguments to the function. 
+
+# Scope
+
+Scope is a very important concept in programming. It refers to the region of the code where a variable is defined and accessible.
+
+For example:
+
+```python
+# 46_scope.py
+def greet(name):
+    message = "a"
+```
+
+In the above example, you have the `message` variable. The scope of this variable is limited to the `greet` function, and it only exists inside the function. If you try to print the variable outside the function, it will show an error. The scope of `name` and `message` variables is the `greet` function.
+
+These variables are referred to as local variables in this function. Local variables have a very short lifetime. When we run the `greet` function with any name given, the Python interpreter will allocate some memory, and the variables `name` and `message` will reference those memory locations. When we finish executing the `greet` function, eventually these variables get garbage collected, and Python releases the memory.
+
+We also have global variables. A global variable can be used anywhere in the file, and it stays in memory for a longer period.
+
+```python
+# 46_scope.py
+message = "a"  # global variable
+
+def greet(name):
+    global message
+    message = "b"
+
+greet("Mosh")
+print(message)
+# Output will be: b
+```
+
+In this example, we use the `global` keyword inside the function to modify the global variable `message`.
+
+> Note: Global variables are generally discouraged. They might have side effects in other functions. Avoid them as much as you can.
+
+# Debugging
+
+Here you are going to study how to find and fix bugs in a program. Let's add a couple of statements after the function in the previous code:
+
+```python
+# 47_debugging.py
+def multiply(*numbers):
+    total = 1
+    for number in numbers:
+        total *= number
+    # return total  # (Suppose this line is commented out by mistake)
+
+print("start")
+multiply(1, 2, 3)
+```
+
+When you run this program, instead of 6 you get 1. So debugging techniques are used to find and fix this bug.
+
+## Debugging in VS Code
+
+- Open the debug panel.
+- Select a debugging configuration (e.g., Python, Django, etc.).
+- To start debugging, first add a breakpoint by pressing F9. This will run the application up to this point.
+- To execute one statement at a time, use F10.
+- Use Shift + F11 to step out of the function.
+
+Debugging is an essential skill to find and fix bugs in your code efficiently.
+
+
+# VS Code Tricks (Windows)
+
+- To move the cursor from the beginning to the end of the line: simply press the End key.
+- To move to the beginning of the line: press the Home key.
+- To move to the beginning of the file: Ctrl + Home.
+- To move a line up or down: press Alt + Up or Down arrow.
+- To duplicate lines or multiple lines: Shift + Alt + Down arrow.
+- To convert lines of code to comment: Ctrl + / (slash).
+
+# VS Code Tricks (Mac)
+
+- To move the cursor from the beginning to the end of the line: Function (fn) + Right arrow.
+- To jump to the beginning of the line: Function (fn) + Left arrow.
+- To go to the top of the file: Function (fn) + Up arrow.
+- To go to the bottom of the file: Function (fn) + Down arrow.
+- To move a line: Alt + Up arrow or Alt + Down arrow.
+
+# Exercise: FizzBuzz
+
+```python
+# 48_exercise_and_solutions.py
+def fizz_buzz(input):
+    print(fizz_buzz(5))
+```
+
+Your task is to fill the code in between.
+If the input we give is divisible by 3, it will return the string "Fizz". If the input is divisible by 5, it will return "Buzz". If the input is divisible by both 3 and 5, it will return "FizzBuzz". If the input is not divisible by 3 or 5, it will return that input number itself.
+
+# Solution
+
+```python
+# 48_exercise_and_solutions.py
+def fizz_buzz(input):
+    if (input % 3 == 0) and (input % 5 == 0):
+        return "FizzBuzz"
+    if input % 3 == 0:
+        return "Fizz"
+    if input % 5 == 0:
+        return "Buzz"
+    return input
+
+print(fizz_buzz(3))
+```
+
+
