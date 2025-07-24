@@ -1,38 +1,37 @@
 #ALGORITHM
 # 1)Start
-# 2)Input comma seperated 3 numbers and store it in a variable
+# 2)Input comma seperated numbers and store it in a variable
 # called input_number
-# 3)Use split to split the input_number at comma and store
-# it in a variable named numbers
-# 4)Store the three variables in three different variables
-# named a,b and c
-# 5)Define a function second_largest(a,b,c)
-# 6)Start with an if loop considering "a" as second largest
-# number and write the conditions using "and" and "or"
-# 7)Then Return a
-# 8)then elif condition consider b as second largest number
-# 9)then return b
-# 10)Else return c
-# 11)Call function and pass a,b and c in it and store it in 
-# variable called largest_second
-# 12)Print largest_second
-# 13)End
+# 3)Convert the input numbers into a list of functions
+# 4)Define a function second_largest to find second largest number
+# 5)Set largest and second as 0
+# 6)Start with a for loop that goes through each number in the list
+# 7)If the number is bigger than the current biggest, then
+# second = largest (previous biggest becomes second biggest)
+# and largest = num (new biggest found)
+# 8)If it is not equal to largest and larger than the second 
+# biggest, second = num
+# 9)Return the second
+# 10)Call function and pass the numbers list in it and store it in 
+# variable called secnd_large
+# 11)Print secnd_large
+# 12)End
 
-input_number = input("Enter comma-separated 3 numbers: ")
+input_number = input("Enter comma-separated numbers: ")
 
-numbers = input_number.split(",")
-a = int(numbers[0])
-b = int(numbers[1])
-c = int(numbers[2])
+numbers = list(map(int, input_number.split(",")))
 
-def second_largest(a,b,c):
-    if (a > c and a < b) or (a > b and a < c):
-        return a
-    elif (b > c and b < a) or (b < c and b > a):
-        return b
-    else:
-        return c
-    
-largest_second = second_largest(a,b,c)
-print(f"Second largest number: {largest_second}")
+def second_largest(numbers):
+    largest = 0
+    second = 0
+    for num in numbers:
+        if num > largest:
+            second = largest
+            largest = num
+        elif num != largest and num > second:
+            second = num
 
+    return second
+
+secnd_large = second_largest(numbers)
+print(secnd_large)

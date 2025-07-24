@@ -27,7 +27,7 @@ for i in range(1,6):
 
 
 def filter_words(words):
-    vowels = "aeiouAEIOU"
+    vowels = set("aeiouAEIOU")
     result = []
 
     for word in words:
