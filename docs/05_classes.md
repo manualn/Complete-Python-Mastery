@@ -77,3 +77,56 @@ print(isinstance(point, Point))
 ```
 - When you run the above code you will get true
 
+
+# Constructors
+
+Continuing the code from last section
+
+```python
+# 47_constructors.py
+class Point:
+    def draw(self):
+        print("draw")
+
+point = Point(1, 2)
+```
+
+Constructor is a special method that is called to view point object
+
+Now we will learn to create a constructor
+Here we are defining a new function.
+
+```python
+# 47_constructors.py
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+point = Point(1, 2)
+print(point.x)
+```
+
+__init__ is a special method that we call a magic method.
+There are several magic methods which will be explained in coming sessions
+This magic method is called a constructor and it's executed when a new point object is created
+
+- self is reference to current point object
+- Here we can have attributes like x and y, that can be easily print on terminals
+- set self.x = x and self.y = y and when you use dot operator x and y will be there.
+
+Now back to draw function.
+Here using self, you can read attributes of the current object or you can call other methods in this object
+
+```python
+# 47_constructors.py
+def draw(self):
+    print(f"Point ({self.x}, {self.y})")
+
+point.draw(point)
+```
+
+The methods that we define in a class should have at least one parameter, which be reference is called self
+
+
+
