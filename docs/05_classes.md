@@ -129,4 +129,80 @@ point.draw(point)
 The methods that we define in a class should have at least one parameter, which be reference is called self
 
 
+# Class vs Instance Attributes
+
+Whenever you create a new point object, it will have these attributes by default.  
+So here we can set point.z = 10 because objects in python are dynamic. In python we don't have to define all the attributes in constructor
+
+```python
+# 48_class_vs_instance_attributes.py
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def draw(self):
+        print(f"Point({self.x}, {self.y})")
+
+point = Point(1, 2)
+point.z = 10
+point.draw()
+```
+
+Here we defined x, y, z attributes, they are called instance attributes.
+
+These are attributes that belong to point instances or point objects.  
+Every point objects have different values for these attributes
+
+Draw another point in terminal.
+
+```python
+# 48_class_vs_instance_attributes.py
+another = Point(3, 4)
+another.draw()
+```
+
+Now we can see two points and these are completely independent of each other.
+
+Each point has it's own attribute.
+Now we can look at class level attribute.
+
+```python
+# 48_class_vs_instance_attributes.py
+class Point:
+    default_color = "red"
+    
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+point = Point(1, 2)
+print(point.default_color)
+print(Point.default_color)
+```
+
+Class attributes are shared across all instances of a class
+
+If default color is changed to "yellow":
+
+```python
+# 48_class_vs_instance_attributes.py
+Point.default_color = "yellow"
+point = Point(1, 2)
+print(point.default_color)
+print(Point.default_color)
+```
+
+Class reference is used here and not working with any point objects.
+You can see after running code the colour has changed to yellow.
+Similarly another also can be printed in this colour
+
+```python
+# 48_class_vs_instance_attributes.py
+another = Point(3, 4)
+print(another.default_color)
+another.draw()
+```
+
+
 
