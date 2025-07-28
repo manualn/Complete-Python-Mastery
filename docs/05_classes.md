@@ -205,4 +205,55 @@ another.draw()
 ```
 
 
+# Class vs Instance Methods
+
+There are instance methods and class methods
+
+```python
+# 49_class_vs_instance_methods.py
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def draw(self):
+        print(f"Point({self.x}, {self.y})")
+```
+
+In the above example, both these examples defined in the point class are instance methods
+
+Using an instance of the point class, use these instance methods whenever you need reference
+If you don't really need an existing object, then class method can be used
+
+For example:
+```python
+# 49_class_vs_instance_methods.py
+point = Point(0, 0)
+point = Point.zero()
+point.draw()
+```
+
+In this case, zero is method that is defined at the class level and it will return a point object.
+We refer to this zero method as factory method, because it's like a factory that creates a new object
+
+```python
+# 49_class_vs_instance_methods.py
+point = Point(0, 0, 1, "an")
+point = Point.zero()
+point.draw()
+```
+
+The above is an example of initializing a complex one.
+
+Now back to point class, define a method zero and call its parameter cls. To make this method a class method, we should decorate it with something like given below outside class method. This is what we call a decorator. It's a way of extending the behaviour of a method - this is what we call class method in python
+
+```python
+# 49_class_vs_instance_methods.py
+@classmethod
+def zero(cls):
+    return cls(0, 0)
+```
+
+
+
+
 
