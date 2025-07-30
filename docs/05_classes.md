@@ -296,3 +296,66 @@ print(str(point))
 ```
 
 - we get the result (1,2)
+
+
+# Comparing Objects
+
+There are situations where two objects can be compared.
+Here we are comparing two point objects:
+
+```python
+# 51_comparing_objects.py
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+point = Point(1, 2)
+other = Point(1, 2)
+print(point == other)
+```
+
+We get False as the result. The reason you get False is by default this equality operator compares the references and addresses of these two objects in memory.
+In the above case, these two variables are referencing two different objects in memory and that's why it's not equal.
+
+Magic method is used to solve this problem. This magic method is called when you compare two objects.
+You can go to the link given in the last chapter and in that page you will see comparison magic methods.
+We have:
+- "eq" for testing equality
+- "ne" for inequality
+- "lt" for less than
+- "gt" for greater than
+
+Now we are going to define `eq` magic method in the point class and it requires two parameters:
+
+```python
+# 51_comparing_objects.py
+class Point:
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+point = Point(1, 2)
+other = Point(1, 2)
+print(point == other)
+```
+
+When we run the program we will get the result True.
+
+If we run "print(point > other)" you'll get the type error because the greater than operator is not supported between instances of the point class.
+
+To solve this problem, we need to define another magic method:
+
+```python
+# 51_comparing_objects.py
+class Point:
+    def __gt__(self, other):
+        return self.x > other.x and self.y > other.y
+
+point = Point(10, 20)
+other = Point(1, 2)
+print(point > other)
+```
+
+Let's run the program and the output will be True. If you change "print(point < other)", you will get the result False.
+
+
