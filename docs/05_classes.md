@@ -254,6 +254,45 @@ def zero(cls):
 ```
 
 
+# Magic Methods
 
+Throughout the course you have heard magic methods a few times.
+These methods have two underscores at the beginning and end of their name, and are called automatically by python interpreter.
 
+Here we have `__init__` magic method, which is automatically called by python not directly called by us.
 
+To know more about magic methods. Search for python 3 magic methods or click on the link: [magic methods](https://rszalski.github.io/magicmethods/)
+
+Back to our code
+
+```python
+# 50_magic_methods.py
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def draw(self):
+        print(f"point ({self.x}, {self.y})")
+
+point = Point(1, 2)
+print(point)
+```
+
+If we print the point object on terminal, we get name of module followed by class name and address of the point object in memory
+
+If str method is used:  
+point.__str__
+
+- This can be reimplimented in a better way.
+
+```python
+# 50_magic_methods.py
+class Point:
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+point = Point(1, 2)
+print(str(point))
+```
+
+- we get the result (1,2)
