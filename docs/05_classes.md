@@ -359,3 +359,21 @@ print(point > other)
 Let's run the program and the output will be True. If you change "print(point < other)", you will get the result False.
 
 
+# Performing Arithmetic Operations
+
+There are magic methods for performing arithmetic operations between two objects.
+In the list of magic methods in the link mentioned in chapter magic methods, we have numeric magic methods.
+
+```python
+# 52_performing_arithmetic_operations.py
+class Point:
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+point = Point(10, 20)
+other = Point(1, 2)
+combined = point + other
+print(combined.x)
+```
+
+
