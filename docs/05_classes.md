@@ -315,10 +315,10 @@ other = Point(1, 2)
 print(point == other)
 ```
 
-We get False as the result. The reason you get False is by default this equality operator compares the references and addresses of these two objects in memory.
+We get False as the result. The reason you get False is by default this equality operator compares the references and addresses of these two objects in memory.  
 In the above case, these two variables are referencing two different objects in memory and that's why it's not equal.
 
-Magic method is used to solve this problem. This magic method is called when you compare two objects.
+Magic method is used to solve this problem. This magic method is called when you compare two objects.  
 You can go to the link given in the last chapter and in that page you will see comparison magic methods.
 We have:
 - "eq" for testing equality
@@ -326,7 +326,7 @@ We have:
 - "lt" for less than
 - "gt" for greater than
 
-Now we are going to define `eq` magic method in the point class and it requires two parameters:
+Now we are going to define "eq" magic method in the point class and it requires two parameters:
 
 ```python
 # 51_comparing_objects.py
