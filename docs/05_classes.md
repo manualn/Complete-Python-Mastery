@@ -377,3 +377,70 @@ print(combined.x)
 ```
 
 
+# Making Custom Containers
+
+We have studied many data structures like lists, sets etc in python.
+There are times that you may need to create your own custom container types. Here we take tag cloud.
+We know class represents a container, it supports various operators.
+
+```python
+# 53_making_custom_containers.py
+cloud = TagCloud()
+len(cloud)
+cloud["python"] = 10
+for tag in cloud:
+    print(tag)
+```
+
+The above are operations supported in this custom container type.
+
+Now we will look upon how to implement a class sentence:
+
+```python
+# 53_making_custom_containers.py
+class TagCloud:
+    def __init__(self):
+        self.tags = {}
+    
+    def add(self, tag):
+        self.tags[tag] = self.tags.get(tag, 0) + 1
+```
+
+In the above dictionary is used internally because it allows you to quickly get the numbers of given tags.
+
+```python
+# 53_making_custom_containers.py
+cloud = TagCloud()
+cloud.add("Python")
+cloud.add("python")
+cloud.add("python")
+print(cloud.tags)
+```
+
+Here instead of using a plain old dictionary, then a custom class is used because to make it a little bit smarter than a typical dictionary.
+
+You can print it lower by adding tag.lower & instead of tag in brackets.
+
+Now taking this to next level. Here magic method is used:
+
+```python
+# 53_making_custom_containers.py
+def __getitem__(self, tag):
+    return self.tags.get(tag.lower(), 0)
+
+def __setitem__(self, tag, count):
+    self.tags[tag.lower()] = count
+
+def __len__(self):
+    return len(self.tags)
+
+def __iter__(self):
+    return iter(self.tags)
+    
+cloud["python"] = 10
+len(cloud)
+```
+
+In order to implement for loop we have to use another magic method called__iter__. This function returns an iterator object which gives one item at a time in for loop.
+
+
