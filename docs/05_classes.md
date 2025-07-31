@@ -444,3 +444,55 @@ len(cloud)
 In order to implement for loop we have to use another magic method called__iter__. This function returns an iterator object which gives one item at a time in for loop.
 
 
+# Private Members
+
+Tag cloud class built in the last lecture has some tiny issues.
+
+```python
+# 54_private_members.py
+cloud = TagCloud()
+cloud.add("python")
+cloud.add("python")
+cloud.add("python")
+print(cloud.tags["PYTHON"])
+```
+
+Here our program is going to crash when you run this you will get an exception of type key error because we don't have this key in dictionary.
+
+In order to avoid this error, you should hide this attribute from the outside.
+
+Back to our class code, make some changes. all tags are replaced as `__tags`.
+
+So when you use dot operator you can see `__tags` in the list of functions.
+
+```python
+# 54_private_members.py
+print(cloud.__tags)
+```
+
+While running the above code you will get an attribute error, because tagcloud object doesn't have this attribute.
+
+There is a way to access this in a different way.
+```python
+# 54_private_members.py
+cloud = TagCloud()
+cloud.__dict__
+```
+
+Dictionary holds all the attributes in the class.
+```python
+# 54_private_members.py
+print(cloud.__dict__)
+```
+
+If we print this instead of above:
+```python
+# 54_private_members.py
+print(cloud._TagCloud__tags)
+```
+
+So, we get that from this chapter that in python there is no private members concept, these private members are still accessible from outside.
+
+Using double underscores is more of a convention to prevent accidental access of these private members.
+
+
