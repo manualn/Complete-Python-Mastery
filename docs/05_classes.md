@@ -496,3 +496,106 @@ So, we get that from this chapter that in python there is no private members con
 Using double underscores is more of a convention to prevent accidental access of these private members.
 
 
+# Properties
+
+There will be situations to control over an attribute in class with the implication below, you can create an object called Product
+
+```python
+# 55_properties.py
+class Product:
+    def __init__(self, price):
+        self.price = price
+
+product = Product(-50)
+```
+
+To ensure that there is no negative price for the Product, we can make this field private and then getting there are two methods for getting and setting the value of this attribute
+
+```python
+# 55_properties.py
+def __init__(self, price):
+    self._price = price
+
+def get_price(self):
+    return self._price
+
+def set_price(self, value):
+    if value < 0:
+        raise ValueError("Price cannot be negative")
+    self._price = value
+```
+
+Now going back to our `__init__` function, instead of directly setting the price attribute, you call `self.set_price` and call price as initial value.
+
+```python
+# 55_properties.py
+def __init__(self, price):
+    self.set_price(price)
+```
+
+The implication is unpythonic, then you can use a property.
+A property is an object that sits in front of an attribute and allows to set or get the value of an attribute.
+
+The property function takes four parameters:
+1. A function for getting value of attribute.
+2. A function for setting the value of attribute.
+3. A function deleting attribute.
+4. For documentation.
+
+```python
+# 55_properties.py
+price = property(get_price, set_price)
+```
+
+The property object will use this function for getting the value of the price attribute.
+
+⇒ Coming back to price of our product:
+```python
+# 55_properties.py
+product = Product(10)
+```
+
+→ If you use dot operator on the product:
+![syntax demo](/images/55_properties_screenshot.png)
+
+⇒ Simply print product price
+```python
+# 55_properties.py
+print(product.price)
+```
+
+⇒ we can also get set get_price and set_price as private
+
+⇒ also we can use decorator to achieve the same result simpler and cleaner way.
+
+Earlier we used a decorator called classmethod to convert an instance method and a class method.  
+Another decorator for creating a property called property decorator.  
+Instead of using property function you can use property decorator.
+
+```python
+# 55_properties.py
+@property
+def price(self):
+    return self._price
+```
+
+```python
+# 55_properties.py
+@price.setter
+def price(self, value):
+    if value < 0:
+        raise ValueError("price cannot be negative")
+    self._price = value
+```
+
+These two decorators (@property and @price.setter) can easily create a property.
+
+Also change:
+```python
+# 55_properties.py
+class Product:
+    def __init__(self, price):
+        self.price = price
+```
+
+
