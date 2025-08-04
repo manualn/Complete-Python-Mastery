@@ -674,3 +674,68 @@ Now when we create mammal object, it will automatically have age attribute Initi
 # 56_inheritance.py
 print(m.age)
 ```
+
+
+# The object Class
+
+Here lets discuss a few couple of useful built-in functions.
+
+→ "isinstance()" – To check if object is an instance of a given class
+
+```python
+# 57_the_object_class.py
+m = Mammal()
+isinstance(m, Mammal)
+```
+
+- This is to check if m is an instance of mammal.
+
+```python
+# 57_the_object_class.py
+print(isinstance(m, Mammal))
+```
+
+- If we pass Animal instead of Mammal:
+```python
+# 57_the_object_class.py
+print(isinstance(m, Animal))
+```
+
+→ This animal class is inherited from a class called object, and that is the base class for our classes in Python.
+
+→ Every classes in Python is directly or indirectly derives from Object class.
+
+→ Going back to instance of object let's see if m is an instance of object 
+```python
+# 57_the_object_class.py
+print (isinstance(m, object)).
+```
+
+→ Run the program and the result will be true.
+
+So we get that mammals inherits from animal, which inherits from object.
+
+→ There is also a built-in-function for creating an empty object:
+```python
+# 57_the_object_class.py
+o = object()
+```
+
+If you use dot operator on o, you can see all these magic methods:
+These all are many magic methods that every class in Python has.
+![syntax demo](/images/57_the_object_class.png)
+
+→ If we use dot operator on m, you can see mammal class also has these methods. Because it is inherited from the base object.
+
+→ Another built in function that you might find useful is "issubclass()"
+
+→ With this you can see if a class derives from another class.
+
+→ To see if mammal is a subclass of Animal:
+```python
+# 57_the_object_class.py
+print(issubclass(Mammal, Animal))
+```
+Output will be true
+
+→ If we change Animal to object we will get True because mammal indirectly inherits from the object class.
