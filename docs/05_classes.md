@@ -599,3 +599,78 @@ class Product:
 ```
 
 
+# Inheritance
+
+While building classes, you may notice that some classes have one or more features or functions in common.
+
+For example:
+
+```python
+# 56_inheritance.py
+class Mammal:
+    def eat(self):
+        print("eat")
+
+    def walk(self):
+        print("walk")
+```
+
+Here mammals is considered as class and they should be able to eat and walk.
+
+Another example is fish. They should be able to eat but fish don't walk, and they swim.
+
+```python
+# 56_inheritance.py
+class Fish:
+    def eat(self):
+        print("eat")
+
+    def swim(self):
+        print("swim")
+```
+
+In both classes, we have duplicated the eat method.
+In real world problems, we will need to repeat this method in various classes. In such situation, don't repeat yourself, we have two solutions - inheritance and composition.
+
+In this chapter, we are going to study inheritance and composition is studied later in the section.
+
+Inheritance is a mechanism that allows us to define the common behaviour or common functions in one class, and then inherit them in other classes.
+
+Here is how it works:
+
+```python
+# 56_inheritance.py
+class Animal:
+    def eat(self):
+        print("eat")
+
+class Mammal(Animal):
+    def walk(self):
+        print("walk")
+```
+
+→ In the above situation we refer animal as Parent or Base class and mammals as child or sub class.
+
+→ Same can be applied to fish class.
+
+→ In these inheritance methods, you can also inherit the attribute of a base class.
+
+```python
+# 56_inheritance.py
+m = Mammal()
+m.eat()
+```
+
+```python
+# 56_inheritance.py
+class Animal:
+    def __init__(self):
+        self.age = 1
+```
+
+Now when we create mammal object, it will automatically have age attribute Initialized to 1.
+
+```python
+# 56_inheritance.py
+print(m.age)
+```
