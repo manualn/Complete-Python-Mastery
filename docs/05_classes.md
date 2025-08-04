@@ -739,3 +739,75 @@ print(issubclass(Mammal, Animal))
 Output will be true
 
 → If we change Animal to object we will get True because mammal indirectly inherits from the object class.
+
+
+# Method Overriding
+
+To add weight to mammal class similarly to age that we have added in Animal class in last example.
+
+```python
+# 58_method_overriding.py
+class Animal:
+    def __init__(self):
+        self.age = 1
+    def eat(self):
+        print("eat")
+
+
+class Mammal(Animal):
+    def __init__(self):
+        self.weight = 2
+    def walk(self):
+        print("walk")
+
+m = Mammal()
+print(m.age)
+print(m.weight)
+```
+
+⇒ when you run the above code, since mammal object has no attribute age, you will get error.
+
+⇒ The reason for this error is because the constructor in animal class is not executed
+
+⇒ Or in other words, the constructor in the mammal class replaced
+
+When you redefine a method in the base class in the derived class, it's called method overriding or replacing a method in the base class.
+
+To avoid this problem, we need to call the constructor of the base class. We use super() function to get access to the base class.
+
+```python
+# 58_method_overriding.py
+class Animal:
+    def __init__(self):
+        print("Animal constructor")
+        self.age = 1
+    def eat(self):
+        print("eat")
+
+class Mammal(Animal):
+    def __init__(self):
+        super().__init__()
+        print("Mammal Constructor")
+        self.weight = 2
+
+m = Mammal()
+print(m.age)
+print(m.weight)
+```
+
+Also we can change the order by making few changes in the code:
+
+```python
+# 58_method_overriding.py
+class Mammal(Animal):
+    def __init__(self):
+        print("Mammal Constructor")
+        self.weight = 2
+        super().__init__()
+```
+
+- Now in the result you can see that the constructor of mammal was called first and then the constructor of animal.
+
+- Summarizing this section, Method overriding means replacing or extending a method defined in the base class.
+
+- In the above implementation, init method in the animal class is extended.
