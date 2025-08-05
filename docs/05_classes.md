@@ -846,3 +846,62 @@ This is called multi-level inheritance which will cause significant increase the
 → If you want to use inheritance limit it to one or two levels.
 
 
+# Multiple Inheritance
+
+→ In python there are maybe multiple base classes.
+
+→ Here is an example of a manager class that have two base classes that is employee and person. This is called multiple inheritance.
+
+→ If this multiple inheritance is not used properly then there will be all sorts of bugs in program
+
+```python
+# 60_multiple_inheritance.py
+class Manager(Employee, Person):
+    pass
+```
+
+Now lets look at example:
+
+```python
+# 60_multiple_inheritance.py
+class Employee:
+    def greet(self):
+        print("Employee greet")
+
+class Person:
+    def greet(self):
+        print("Person Greet")
+
+class Manager(Employee, Person):
+    pass
+
+manager = Manager()
+manager.greet()
+```
+
+While running this code we get the output as employee greet because we added employee class first.
+If employee class doesn't have greet method, the python interpreter will look at the person class.
+
+→ This is an issue if someone changes the order of base classes the program will behave differently.
+
+→ So similar multi level inheritance, multiple inheritance can create all sorts of issues in programs.
+
+Multiple inheritance is not always a bad thing. It's bad if not used properly.
+
+```python
+# 60_multiple_inheritance.py
+class Flyer:
+    def fly(self):
+        pass
+
+class Swimmer:
+    def swim(self):
+        pass
+
+class FlyingFish(Flyer, Swimmer):
+    pass
+```
+
+This is a good example of multiple inheritance.
+
+
