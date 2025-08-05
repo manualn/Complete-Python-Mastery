@@ -746,20 +746,22 @@ Output will be true
 To add weight to mammal class similarly to age that we have added in Animal class in last example.
 
 ```python
-# 58_method_overriding.py
 class Animal:
     def __init__(self):
         self.age = 1
     def eat(self):
         print("eat")
+```
 
-
+```python
 class Mammal(Animal):
     def __init__(self):
         self.weight = 2
     def walk(self):
         print("walk")
+```
 
+```python
 m = Mammal()
 print(m.age)
 print(m.weight)
@@ -773,23 +775,26 @@ print(m.weight)
 
 When you redefine a method in the base class in the derived class, it's called method overriding or replacing a method in the base class.
 
-To avoid this problem, we need to call the constructor of the base class. We use super() function to get access to the base class.
+To avoid this problem, we need to call the constructor of the base class explicitly. We use `super()` function to get access to the base class.
 
 ```python
-# 58_method_overriding.py
 class Animal:
     def __init__(self):
         print("Animal constructor")
         self.age = 1
     def eat(self):
         print("eat")
+```
 
+```python
 class Mammal(Animal):
     def __init__(self):
         super().__init__()
         print("Mammal Constructor")
         self.weight = 2
+```
 
+```python
 m = Mammal()
 print(m.age)
 print(m.weight)
@@ -798,7 +803,6 @@ print(m.weight)
 Also we can change the order by making few changes in the code:
 
 ```python
-# 58_method_overriding.py
 class Mammal(Animal):
     def __init__(self):
         print("Mammal Constructor")
@@ -806,8 +810,39 @@ class Mammal(Animal):
         super().__init__()
 ```
 
-- Now in the result you can see that the constructor of mammal was called first and then the constructor of animal.
+Now in the result you can see that the constructor of mammal was called first and then the constructor of animal.
 
-- Summarizing this section, Method overriding means replacing or extending a method defined in the base class.
+Summarizing this section, Method overriding means replacing or extending a method defined in the base class.
 
-- In the above implementation, init method in the animal class is extended.
+In the above implementation, `__init__` method in the animal class is extended.
+
+
+# Multi-level Inheritance
+
+→ Inheritance presents duplication and allows us to reuse code.
+
+→ There is also negative character for inheritance because too much inheritance between classes can increase complexity and can cause various kinds of issues.
+
+For example:
+
+```python
+# 59_multi_level_inheritance.py
+class Chicken(Bird):
+    pass
+```
+
+Here chicken class inherits the features of birds but chicken cannot fly.
+
+So this is an example of inheritance.
+
+Another example:
+Employee - Person - Living Creature - Thing
+
+Here Employee is a person which is a living creature which is a thing.
+This is called multi-level inheritance which will cause significant increase the complexity of software.
+
+→ Multi level inheritance should be avoided at all times.
+
+→ If you want to use inheritance limit it to one or two levels.
+
+
