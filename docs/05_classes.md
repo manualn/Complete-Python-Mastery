@@ -905,3 +905,54 @@ class FlyingFish(Flyer, Swimmer):
 This is a good example of multiple inheritance.
 
 
+# A Good Example of Inheritance
+
+⇒ In this example we are going to define a base class called Stream. In this class methods like open and closed is defined.
+
+→ First define constructor and set open flag initially to false.
+
+⇒ Then when you call open method you can set that to true.
+
+→ If the stream is already open is considered for that you should raise exception.
+
+→ Similarly define closed method.
+
+Then built the file stream which inherits from stream class. In the class define a read method.
+
+→ Then create network stream with the method read itself.
+
+→ This is a good example of Inheritance because we don't have multilevel inheritance here.
+
+→ Here on top of hierarchy we have stream class and below file stream and network stream as two subclasses.
+
+→ Also once here you don't have multiple inheritance, so subclasses don't have multiple parents.
+
+```python
+# 61_a_good_example_of_inheritance.py
+class InvalidOperationError(Exception):
+    pass
+
+class Stream:
+    def __init__(self):
+        self.opened = False
+
+    def open(self):
+        if self.opened:
+            raise InvalidOperationError("Stream is already open")
+        self.opened = True
+
+    def close(self):
+        if not self.opened:
+            raise InvalidOperationError("Stream is already closed")
+        self.opened = False
+
+class Filestream(Stream):
+    def read(self):
+        print("Reading data from a file")
+
+class NetworkStream(Stream):
+    def read(self):
+        print("Reading data from a network")
+```
+
+
