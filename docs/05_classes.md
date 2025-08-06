@@ -1021,3 +1021,77 @@ class MemoryStream(Stream):
 → So now all our classes have read method.
 
 
+# Polymorphism
+
+Another abstract class called UIControl which has abstract method called draw
+
+```python
+# 63_polymorphism.py
+class UIControl(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+```
+
+→ There are two classes that derive from UI control: One is text box and the other is dropdown list
+
+Both these classes implement the draw method.
+
+```python
+# 63_polymorphism.py
+class TextBox(UIControl):
+    def draw(self):
+        print("TextBox")
+
+class DropDownList(UIControl):
+    def draw(self):
+        print("DropDownList")
+```
+
+Next define draw function that takes UI control object and calls draw method:
+
+```python
+# 63_polymorphism.py
+def draw(control):
+    control.draw()
+
+ddl = DropDownList()
+draw(ddl)
+print(isinstance(ddl, UIControl))
+```
+
+The output will be true, so dropdown list object is an instance of a new item control
+
+```python
+# 63_polymorphism.py
+ddl = DropDownList()
+textbox = TextBox()
+draw(textbox)
+```
+
+If you run the above code, the output will be TextBox.
+
+Now let's change the control function:
+
+```python
+# 63_polymorphism.py
+def draw(controls):
+    for control in controls:
+        control.draw()
+
+ddl = DropDownList()
+textbox = TextBox()
+draw([ddl, textbox])
+```
+
+If you run the above code, you will get two messages – DropDownList and TextBox, using this we can render the user interface of an application
+
+→ In this example, draw method is taking many different forms
+
+→ So this is a classic example of polymorphism.
+
+→ Poly means many, morphism means forms.
+
+→ Polymorphism means many forms.
+
+
