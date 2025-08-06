@@ -1095,3 +1095,145 @@ If you run the above code, you will get two messages – DropDownList and TextBo
 → Polymorphism means many forms.
 
 
+# Duck Typing
+
+→ Last chapter was about a classic example of polymorphism.
+
+→ For polymorphic behaviour, you should start by defining base class.
+
+→ Draw method takes different forms. Eg: draw method in the drop down list, radio button and so on.
+
+→ Since python is a dynamically typed language, there is no need of UI control as the base class.
+
+→ If you delete UI control class, then also you can achieve polymorphic behaviour.
+
+→ Draw function is iterable, so the object has to be iterable then we can pass string, a list, a tuple, a dictionary. etc.
+
+→ Python doesn't care whether the objects derive from the ui control class.
+
+→ As long as every object has draw method, python will be happy. This is called duck typing.
+
+→ Python is dynamical language and it doesn't check the type of objects. It looks only for the existence of certain methods in objects.
+
+→ In this example, python specifically looks for the draw method. If the object has draw method, python assumes it as a ui control.
+
+→ So to achieve polymorphic behaviour, we don't need a base class like ui control, because python supports duck typing.
+
+
+# Extending Built-in Types
+
+→ In python, you can use inheritance with the built in types
+
+For example:
+
+```python
+# 65_extending_built_in_python.py
+class Text(str):
+    def duplicate(self):
+        return self + self
+```
+
+Text class inherits all the features of python strings. Also we can duplicate many.
+self represents current object which is instance of a string class in this case.
+
+```python
+# 65_extending_built_in_python.py
+text = Text("Python")
+print(text.lower())
+print(text.duplicate())
+```
+
+→ As another example, extend the python lists.
+
+Create a new class that inherits from list class. Here append method is used to append an object to this list
+
+```python
+# 65_extending_built_in_python.py
+class TrackableList(list):
+    def append(self, object):
+        print("Append called")
+```
+
+Now call the append method to super class:
+
+```python
+# 65_extending_built_in_python.py
+super().append(object)
+```
+
+Create a list object using TrackableList class:
+
+```python
+# 65_extending_built_in_python.py
+list = TrackableList()
+list.append("414")
+```
+
+Now we get that extending built-in function in python is really easy.
+
+
+# Data Classes
+
+By default python compares objects based on where they are stored in memory.
+
+If two objects variables are referencing same object in memory they are equal.
+
+```python
+# 66_data_classes.py
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+  
+p1 = Point(1, 2)
+p2 = Point(1, 2)
+print(p1 == p2)
+```
+In this example, our point objects are in two different locations even though they have same attributes.
+
+→ Use id function which returns where an object is stored.
+
+→ print id of the points p1 and p2. From the result you will get that point these objects are in two different locations in memory.
+
+```python
+# 66_data_classes.py
+print(id(p1))
+print(id(p2))
+```
+
+To solve this issue, define another function:
+
+```python
+# 66_data_classes.py
+def __eq__(self, other):
+    return self.x == other.x and self.y == other.y
+print(p1 == p2)
+```
+
+If there are no methods in class then we can look at another example:
+
+```python
+# 66_data_classes.py
+from collections import namedtuple
+
+Point = namedtuple("Point", ["x", "y"])
+p1 = Point(x=1, y=2)
+p2 = Point(x=1, y=2)
+print(p1 == p2)
+print(p1.x)
+```
+
+If you're working with classes that only have only data and no methods, then use namedtuple instead.
+
+These named tuples are better than regular tuples because there will be attributes in point objects.
+
+→ You can't set an attribute of a namedtuple after initialized.
+
+→ If you really need to modify, you should create a new point object:
+
+```python
+# 66_data_classes.py
+p1 = Point(x=10, y=2)
+```
+
+
