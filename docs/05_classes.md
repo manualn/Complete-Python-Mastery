@@ -956,3 +956,68 @@ class NetworkStream(Stream):
 ```
 
 
+# Abstract Base Classes
+
+There are couple of issues from with the implementation in previous example.
+
+→ we can create a stream object and call the open method.
+
+This is an issue because stream class is an abstract concept.
+
+→ we created an instance of the subclass and we have only created this stream class as base class to provide code, that could be reused across different kind of streams.
+
+→ Now look at the filestream and the network stream classes.
+
+In both classes there is a read method. It's not going to be consistent with other kinds of streams.
+
+An abstract base class is to provide some common code to these derivatives.
+
+To make stream class as an abstract base class make these changes:
+
+```python
+# 62_abstract_base_classes.py
+from abc import ABC, abstractmethod
+```
+
+→ ABC - abstract base class
+
+→ Abstractmethod is used as decorator
+→ name of the module is all lower case and name of class is upper case
+
+→ Now to make the stream class abstract derive it from ABC:
+
+```python
+# 62_abstract_base_classes.py
+class Stream(ABC):
+    @abstractmethod
+    def read(self):
+        pass
+```
+
+• Decorate the read method with decorator Abstract method
+
+⇒ These two simple changes is required to the above discussed issues.
+
+Another new stream called memory stream and can create it from stream class:
+
+```python
+# 62_abstract_base_classes.py
+class MemoryStream(Stream):
+    pass
+
+stream = MemoryStream()
+stream.open()
+```
+
+→ To make it a concrete class you can redefine it as:
+
+```python
+# 62_abstract_base_classes.py
+class MemoryStream(Stream):
+    def read(self):
+        print("Reading data from a memory stream")
+```
+
+→ So now all our classes have read method.
+
+
