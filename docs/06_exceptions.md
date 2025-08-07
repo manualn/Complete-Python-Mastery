@@ -248,4 +248,4 @@ In th output you can see our first implementation as well as second implementati
 
 Second one is four times faster.
 
-So think twice if you want to build functions raising exceptions. 
+So think twice if you want to build functions raising exceptions.
