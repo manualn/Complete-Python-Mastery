@@ -28,11 +28,11 @@ def is_valid_password(password):
     upper = False
     special = False
     for letter in password:
-        if letter in "1234567890":
+        if letter in ("1234567890"):
             digit = True
         if letter.isupper():
             upper = True
-        if letter in "!@#":
+        if letter in ("!@#$%&*"):
             special = True
 
     if len(password) >= 8 and digit and upper and special:
