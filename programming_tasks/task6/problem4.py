@@ -16,9 +16,9 @@
 # 11)Print grade_list
 
 
-input = input("Enter 5 comma-separated numbers: ")
+number = input("Enter 5 comma-separated numbers: ")
 
-marks = list(map(int, input.split(",")))
+marks = list(map(int, number.split(",")))
 
 def grading_report(marks):
     grades = []

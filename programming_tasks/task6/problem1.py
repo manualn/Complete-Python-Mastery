@@ -23,7 +23,7 @@
 # 14)End
 password = input("Enter a password: ")
 
-def is_valid_password(password):
+def is_strong_password(password):
     digit = False
     upper = False
     special = False
@@ -41,5 +41,5 @@ def is_valid_password(password):
         return "weak"
     
 
-password_valid = is_valid_password(password)
+password_valid = is_strong_password(password)
 print(password_valid)

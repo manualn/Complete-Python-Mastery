@@ -17,27 +17,25 @@
 
 n = int(input("enter a number: "))
 
+def is_prime(num):
+    if num < 2:
+        return False
+
+    is_prime = True
+    for i in range(2, num):
+        if num % i == 0:
+            is_prime = False
+            break
+    return is_prime
+
 def prime_status(n):
-    primes = [] 
-    for num in range(2, n+1):
-        is_prime = True
-
-        for i in range(2, num):
-            if num % i == 0:
-                is_prime = False
-                break
-        
-        if is_prime:
-                primes.append(num)
-
     result = {"prime": False, "twin_prime": False}
 
-
-    if n in primes:
+    if is_prime(n):
         result["prime"] = True
-        
-    if (n - 2 in primes) or (n + 2 in primes):
-        result["twin_prime"] = True
+
+        if is_prime(n - 2) or is_prime(n + 2):
+            result["twin_prime"] = True
 
     return result
 

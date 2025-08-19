@@ -39,9 +39,10 @@ def count_pattern(sentence):
             count['capital_start'] += 1
         if word[-1] in vowels:
             count['vowel_end'] += 1
-        for d in digits:
-            if d in word:
+        for ch in word:
+            if ch.isdigit():
                 count['has_digit'] += 1
+                break
 
     return count
 
