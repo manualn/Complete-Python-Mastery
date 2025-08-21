@@ -24,6 +24,7 @@ easily:
 # 79_creating_modules.py
 from sales import cale_chipping
 ```
+![syntax demo](/images/79_creating_modules.png)
 
 Also we can import calculate tax
 and then call it
@@ -42,3 +43,10 @@ sales.calc_shipping()
 ```
 
 Its your personal preference to choose which method. There is no right or wrong here.
+
+# Compiled Python Files
+Compiling of these files will speed up the loading of this module. It does not alter the actual performance of this application.  
+To know that the compiled version is uptodate with the latest code in the sales module, It checks the date and time of the two files compiled.  
+Here the file is compiled using cpython version 37.  
+In this python byte code is used:
+![syntax demo](/images/80_compiled_python_files.png)
