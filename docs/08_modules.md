@@ -50,3 +50,30 @@ To know that the compiled version is uptodate with the latest code in the sales 
 Here the file is compiled using cpython version 37.  
 In this python byte code is used:
 ![syntax demo](/images/80_compiled_python_files.png)
+
+
+# Module Search Path
+
+Import sales from the first section. Python will look for a file
+called sales.py in the current directory. If it is not found in
+current, it will search for it in a bunch of predefined directories
+
+→ There is a built-in module called path
+
+```python
+# 80_module_search_path.py
+import sales
+import sys
+print(sys.path)
+```
+
+If we run the above code, the result will be an array of strings.
+The first element in this array represents the current folder.
+It will be different in different machines.
+
+After that 3 frameworks ie, python version framework. This is also
+different on your machine depending on operating system
+
+When python sees an import statement, it will search all these
+directories to find this module
+
