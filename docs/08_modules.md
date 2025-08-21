@@ -127,3 +127,26 @@ from ecommerce_82_subpackages.shopping import sales
 sales.calc_chipping()
 ```
 
+
+# Intra-package References
+
+Add a sub package called customer in ecommerce package.
+In customer package, create a contact file.  
+Absolute import can be used to import contact from customer
+
+```python
+# 83_intra_package_references.py
+from ecommerce_83_intra_package_references.customer import contact
+```
+
+We can also use a relative import. Here we are at the ecommerce
+package level, in this package there are two subpackages – customer
+and shopping
+
+```python
+# 83_intra_package_references.py
+from ..customer import contact
+```
+
+Prefer to use absolute imports — that is recommended PEP 8.
+
