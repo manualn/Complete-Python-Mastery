@@ -77,3 +77,37 @@ different on your machine depending on operating system
 When python sees an import statement, it will search all these
 directories to find this module
 
+
+# Packages
+
+→ Python modules in one folder is not good
+
+→ Here we will move this sales modules to a directory called commerce. So add the sub directory called ecommerce and then drag and drop this sales module into ecommerce
+
+→ Add a new file called __init__.py
+
+→ When this new file is added, python treats the commerce folder as package
+
+→ A package is a container for one or more modules
+
+In technical terms, the package is mapped to a directory and a module is mapped to file.
+
+```python
+# 81_packages.py
+import ecommerce.sales
+
+ecommerce.sales.calc_tax()
+```
+
+This makes our code little tedious.
+
+For avoiding that we can use from statement
+
+```python
+# 81_packages.py
+from ecommerce.sales import calc_tax
+
+calc_tax()
+```
+Also we can import sales module as an object and then use operator to access all the members of this module.
+![syntax demo](/images/81_packages_screenshot.png)
