@@ -111,3 +111,19 @@ calc_tax()
 ```
 Also we can import sales module as an object and then use operator to access all the members of this module.
 ![syntax demo](/images/81_packages_screenshot.png)
+
+
+# Subpackages
+
+As a program grows bigger, break a package into sub packages.
+
+For example ecommerce package can be broken down into few sub packages. For that add new folder into ecommerce named shopping and move sales module into this folder.
+
+Here shopping is not a package because there is no init file. So add init file in a shopping folder.
+
+```python
+# 82_subpackages.py
+from ecommerce_82_subpackages.shopping import sales
+sales.calc_chipping()
+```
+
