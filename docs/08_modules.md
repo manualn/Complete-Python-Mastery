@@ -148,5 +148,93 @@ and shopping
 from ..customer import contact
 ```
 
-Prefer to use absolute imports — that is recommended PEP 8.
+Prefer to use absolute imports — that is recommended by PEP 8.
+
+
+# The dir Function
+
+Here we are going to look at a powerful built-in function called dir.
+
+This function helps to get the list of attributes and methods in an object
+
+```python
+# 84_the_dir_function.py
+from ecommerce.shopping import sales
+sales.
+```
+
+dot operator is used to access all the attributes and functions defined in it
+
+You can use dir function for debugging
+
+```python
+# 84_the_dir_function.py
+print(dir(sales))
+```
+
+Result of this program will be an array of strings. In this array we have all attributes and methods to find an object.
+
+In sales function we have shipping and tax as attributes as well as magic attributes are automatically created.
+
+- list out some of them
+
+```python
+# 84_the_dir_function.py
+print(sales.__name__)
+print(sales.__package__)
+print(sales.__file__)
+```
+
+- Name of module, name of packages, and path to the file and file system is printed by running the above code
+
+
+# Executing modules as scripts
+
+→ In the last section we have defined sales module that have two functions
+
+```python
+# 85_executing_modules_as_scripts.py
+print("Sales Initialized")
+def calc_tax():
+    pass
+def calc_shipping():
+    pass
+```
+
+→ If this module is imported in a few modules of our program, python will load it only once, and then cache it in memory.
+
+So the statements are written, it will be executed
+
+Using the same technique you can write the initialization code for our packages
+
+```python
+# 85_executing_modules_as_scripts.py
+print("Ecommerce Initialized")
+```
+
+Run this program in `__init__` file and you can see the result.
+
+From the last module, you know that every module has a built-in name attribute that is automatically created
+
+```python
+# 85_executing_modules_as_scripts.py
+print("Sales Initialized", __name__)
+```
+
+If you run this program in sales module, the name of our module is changed to main
+
+So the name of the module that starts our program is always main
+
+With the above code we can make the sales file usable as script and also used as a module.
+
+```python
+# 85_executing_modules_as_scripts.py
+if __name__ == "__main__":
+    print("sales started")
+    calc_tax()
+```
+
+So if you run this module directly, the name of our module will be `__main__`.
+
+If we import this to another module, this code will not be executed. The name of this module will no longer be `__main__`. It will be `ecommerce`.
 
