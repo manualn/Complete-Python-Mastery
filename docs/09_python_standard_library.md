@@ -184,7 +184,6 @@ path.glob("*.py")
 py_files = [p for p in path.glob("*.py")]
 print(py_files)
 ```
-
 → In the result, we have a file path that has only one file
 
 → Recursive glob:
@@ -194,3 +193,93 @@ print(py_files)
 py_files = [p for p in path.rglob("*.py")]
 print(py_files)
 ```
+
+# Working with files
+
+→ Here we will learn about useful methods of working with files
+
+→ path.exists() is used to check if the file is used
+
+→ path.rename() is used to rename it
+
+→ Also we can delete it by using the unlink method
+
+→ path.stat() returns the information about the files.
+
+→ If you print the stat method, you will get a stacked result of objects with these attributes
+
+like st-mode, st-ino etc.
+
+→ we can also get the last access time in the attribute st-atime
+
+→ st-mtime gives last modified time
+
+→ st-ctime gives the creations time
+
+→ All these time values are in seconds
+
+```python
+# 88_working_with_files.py
+from pathlib import Path
+
+path = Path("ecommerce/__init__.py")
+# path.exists()
+# path.rename("init.txt")
+# path.unlink()
+print(path.stat())
+```
+
+→ To modify time to human readable time,
+
+```python
+# 88_working_with_files.py
+from pathlib import Path
+from time import ctime
+
+path = Path("ecommerce/__init__.py")
+print(path.stat().st_ctime)
+print(ctime(path.stat().st_ctime))
+```
+
+→ There are a couple methods for reading data from a file
+
+path.read_bytes()
+
+→ This returns a file contents as bytes object
+
+→ when representing binary data, path.read_text() returns the content of file as string
+
+→ Also we can use built-in functions
+
+with open("__init__.py", "r") as file:
+    ...
+
+print(path.read_text())
+
+→ we also have another functions write-text to write some textual data
+
+path.write_text("...")
+path.write_bytes("...")
+
+→ when coming to copying a file, these methods cannot be used
+
+For that,
+
+source = Path("ecommerce/__init__.py")
+target = Path()/"__init__.py"
+
+To copy this:
+
+target.write_text(source.read_text())
+
+→ This method is little tedious.
+
+To make it easy:
+
+import shutil
+
+shutil.copy(source, target)
+
+This approach is cleaner and easier in path object
+
+
