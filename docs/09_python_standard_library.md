@@ -283,3 +283,69 @@ shutil.copy(source, target)
 This approach is cleaner and easier in path object
 
 
+# Working with zip files
+
+In this section we are going to learn about how to work with zip files
+
+```python
+# 89_working_with_zip_files.py
+from pathlib import Path
+from zipfile import ZipFile
+
+ZipFile("files.zip", "w")
+```
+
+Now we can store it in zip.
+
+```python
+# 89_working_with_zip_files.py
+zip = ZipFile("files.zip", "w")
+```
+
+we have already learned about rglob to recursively find all the files in this directory
+
+Path("ecommerce").rglob("*.*")
+
+As you already know this will return a result as generators you should iterate over it.
+
+```python
+# 89_working_with_zip_files.py
+for path in Path("ecommerce").rglob("*.*"):
+    zip.write(path)
+
+zip.close()
+```
+
+If there is any error, to avoid that you should try finally block or with statement.
+
+```python
+# 89_working_with_zip_files.py
+from pathlib import Path
+from zipfile import ZipFile
+
+with ZipFile("files.zip", "w") as zip:
+    for path in Path("ecommerce").rglob("*.*"):
+        zip.write(path)
+```
+
+Run this and you will get a zip file in ecommerce folder
+
+To set file without opening it, to read only we should use another code:
+
+```python
+# 89_working_with_zip_files.py
+from zipfile import ZipFile
+
+with ZipFile("files.zip") as zip:
+    print(zip.namelist())
+    zip.getinfo("ecommerce/__init__.py")
+
+    # lets store it in another variable called info.
+    info = zip.getinfo("ecommerce/__init__.py")
+    print(info.file_size)
+    print(info.compress_size)
+
+    # New to extract all files from all zip files
+    zip.extractall("extract")
+```
+
