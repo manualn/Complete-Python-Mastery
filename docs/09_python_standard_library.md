@@ -349,3 +349,56 @@ with ZipFile("files.zip") as zip:
     zip.extractall("extract")
 ```
 
+# Working with csv files
+
+In this lecture, we will learn how to work with csv files in python
+
+→ First import csv and open a csv file. path function cannot be used to open file. Also close the file after you are done.
+
+```python
+# 90_working_with_csv_files.py
+
+import csv
+
+with open("data.csv", "w") as file:
+    writer = csv.writer(file)
+    writer.writerow(["transaction_id", "product_id", "price"])  
+    # similarly add second row
+    writer.writerow([1000, 1, 5])
+    writer.writerow([1000, 2, 15])
+```
+
+→ csv.writer will give us the file in csv format
+
+→ writerow is to write it in tabular form
+
+→ In that we can pass an array of values. for eg: here we are adding headers as first row.
+
+If you save and run it, you can see data.csv file in your folder that contains these data given. Here we have a table of data each line represents a row. This is a very simple way to store data and transfer it from one machine to another
+
+→ To open the same csv file in read mode, remove the second argument in open function.
+
+→ Instead of csv writer, here we will use csv reader
+
+```python
+# 90_working_with_csv_files.py
+import csv
+
+with open("data.csv") as file:
+    reader = csv.reader(file)
+    print(list(reader))
+```
+
+→ for printing row in read mode:
+
+```python
+# 90_working_with_csv_files.py
+with open("data.csv") as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+```
+
+→ we have set the reader in a list already. This reader object has a index or a position that is set at the beginning. when we set reader as a list, that position goes to end of the file
+
+→ without print(list(reader)) and run the program you will get three rows. Each row is an array of strings
