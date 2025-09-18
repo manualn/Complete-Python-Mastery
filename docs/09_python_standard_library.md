@@ -402,3 +402,60 @@ with open("data.csv") as file:
 → we have set the reader in a list already. This reader object has a index or a position that is set at the beginning. when we set reader as a list, that position goes to end of the file
 
 → without print(list(reader)) and run the program you will get three rows. Each row is an array of strings
+
+# Working with JSON files
+
+→ Here we are going to learn how to work with json files in python.
+
+→ JSON stands for JavaScript Object Notation and is a popular way to format data in a human readable way.
+
+→ It's very important to know json because a lot of popular websites provide their data in Json format.
+
+→ firstly import json in python
+
+```python
+# 91_working_with_json_files.py
+import json
+
+movies = []
+
+# Each movie is essentially a collection of key value pairs.
+movies = [
+    {"id": 1, "title": "Terminator", "year": 1989},
+    {"id": 2, "title": "Kindergarten Cop", "year": 1993},
+]
+
+# Now call json.dumps and pass movies variable in that
+data = json.dumps(movies)
+print(data)
+```
+
+→ This is an example of json data.
+
+Now instead of printing it on terminal, we are going to create path object.
+
+```python
+# 91_working_with_json_files.py
+from pathlib import Path
+Path("movies.json").write_text(data)
+```
+
+→ Now you learned how to write data in json file
+
+→ If you get a json file from somewhere and you want to read it in python
+
+```python
+# 91_working_with_json_files.py
+import json
+from pathlib import Path
+
+data = Path("movies.json").read_text()
+movies = json.loads(data)
+print(movies)
+print(movies[0])
+print(movies[0]["title"])
+```
+
+→ json.loads is used to load the dictionary.
+
+→ This array of dictionaries can be printed.
