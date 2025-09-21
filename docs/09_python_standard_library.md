@@ -459,3 +459,52 @@ print(movies[0]["title"])
 → json.loads is used to load the dictionary.
 
 → This array of dictionaries can be printed.
+
+# Working with a SQLite Database
+
+→ In this lecture, we are learning how to work with SQLite in Python.
+
+→ SQLite is a very lightweight database that we use for storing data on an application.
+
+→ Its technology of small applications like the apps that we run on phones and tablets. It allows us to easily store our data in structure format with a table of rows and columns.
+
+→ Import sqlite3 module first
+
+```python
+# 92_working_with_sqlite_databases.py
+import sqlite3
+import json
+from pathlib import Path
+
+movies = json.loads(Path("movies.json").read_text())
+print(movies)
+```
+
+→ this movies object is printed and see if everything worked.
+
+→ If you own this, the result will be a list of dictionaries.
+
+→ To store this list in a database use sqlite3.
+
+→ sqlite3.connect("db.sqlite3")
+
+→ If the given file name doesn't exist, this method will create it.
+
+→ This will return a connection object, and it should be closed.
+
+→ better approach is to use with statement
+
+```python
+# 92_working_with_sqlite_databases.py
+with sqlite3.connect("db.sqlite3") as conn:
+    command = "INSERT INTO Movies"
+```
+
+→ Here we are creating a string in command assuming we have a table called movies and add values with 3 question marks.
+
+```python
+# 92_working_with_sqlite_databases.py
+command = "INSERT INTO Movies VALUES(?,?,?)"
+```
+
+→ This question marks are placeholders for values that are going to be supplied in the next step.
