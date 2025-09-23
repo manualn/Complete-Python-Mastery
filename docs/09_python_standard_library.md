@@ -508,3 +508,58 @@ command = "INSERT INTO Movies VALUES(?,?,?)"
 ```
 
 → This question marks are placeholders for values that are going to be supplied in the next step.
+
+Next we are going to iterate over movies.
+
+```python
+# 92_working_with_sqlite_databases.py
+with sqlite3.connect("db.sqlite3") as conn:
+    command = "INSERT INTO Movies VALUES(?,?,?)"
+    for movie in movies:
+        conn.execute(command, tuple(movie.values()))
+    conn.commit()
+```
+
+→ to get tuple of movie values this command can be used
+
+→ If you run the above code, you will get an operational error.
+
+Because here we are dealing with an empty database, this database doesn't have any tables
+
+→ Search for db browser for sqlite in Google to know more about creating a new database
+
+→ There you can add column names for your table
+
+→ Now go back to the program and run again. there will be no error
+
+→ And now go to back the db browser and select the movies. You can see the movie names are stored in a structured format
+
+Now we can look at how to read data from database
+
+```python
+# 92_working_with_sqlite_databases.py
+import sqlite3
+
+with sqlite3.connect("db.sqlite3") as conn:
+    command = "SELECT * FROM Movies"
+    cursor = conn.execute(command)
+    for row in cursor:
+        print(row)
+```
+
+→ Dont need to iterate here for reading data.
+
+```python
+# 92_working_with_sqlite_databases.py
+with sqlite3.connect("db.sqlite3") as conn:
+    command = "SELECT * FROM Movies"
+    cursor = conn.execute(command)
+    movies = cursor.fetchall()
+    print(movies)
+```
+
+→ If you run the above, you will get the list of titles
+
+→ These are the basics of creating a database in python.
+
+→ To study about database first be familiar with the sql programming language
