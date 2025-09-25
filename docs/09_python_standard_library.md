@@ -563,3 +563,57 @@ with sqlite3.connect("db.sqlite3") as conn:
 → These are the basics of creating a database in python.
 
 → To study about database first be familiar with the sql programming language
+
+# Working with Timestamps
+
+Here we are going to work with date and time in python
+
+There are two modules working with date and time.
+
+1) Time module
+ - gives us time stamp
+
+2) Date-time module
+ - which gives us date time objects with attributes like year, month and so on
+
+→ In this lecture, we are going to learn time module
+
+```python
+# 93_working_with_timestamps.py
+import time
+time.time()
+```
+
+Time module has a method called time that returns the current date time as a time stamp.
+
+```python
+# 93_working_with_timestamps.py
+import time
+print(time.time())
+```
+
+the result will be a floating point number, which represents the number of seconds.
+
+→ These time stamps are not human readable, so its used to perform calculations
+
+→ For example to send email to 2000 recipients
+
+```python
+# 93_working_with_timestamps.py
+import time
+
+def send_emails():
+    for i in range(10000):
+        pass
+
+start = time.time()
+send_emails()
+end = time.time()
+
+duration = end - start
+print(duration)
+```
+
+→ The result will be the time taken to execute this function.
+
+→ We can also use the time module to calculate time taken to execute some piece of code
