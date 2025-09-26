@@ -617,3 +617,78 @@ print(duration)
 → The result will be the time taken to execute this function.
 
 → We can also use the time module to calculate time taken to execute some piece of code
+
+# Working with DateTimes
+
+In this lecture, you are going to learn how to work with date time objects in Python.
+
+→ Import datetime firstly and there is a method called datetime
+
+```python
+# 94_working_with_datetimes.py
+import datetime
+datetime.datetime(2018, 1, 1)
+```
+
+→ In datetime method you can pass the hour, minute, and year as well.
+
+```python
+# 94_working_with_datetimes.py
+from datetime import datetime
+dt = datetime(2018, 1, 1)
+```
+
+→ This code is more neat than the first one
+
+```python
+# 94_working_with_datetimes.py
+datetime.now()
+```
+
+→ It is used to get the current date time
+
+→ datetime.strptime is for parsing or converting a date time string.
+
+→ This is particularly useful when we get input from the user or read it from the file.
+
+```python
+# 94_working_with_datetimes.py
+from datetime import datetime
+dt = datetime.now()
+datetime.strptime
+```
+
+→ In all these scenarios, date time are represented as strings, and we need to convert them to date time objects
+
+→ You can study about parsing date and its date format, search for python 3 strptime in google.
+
+In that page, you can see the directives.
+
+→ If you use a lowercase y, that represents a two digit year
+
+```python
+# 94_working_with_datetimes.py
+import time
+from datetime import datetime
+
+dt = datetime.strptime("2018/01/01", "%Y/%m/%d")
+
+dt = datetime.fromtimestamp(time.time())
+
+print(f"{dt.year}/{dt.month}")
+print(dt.strftime("%Y/%m/%d"))
+```
+
+→ We also have a method for formatting date time, ie dt.strftime(). This method opposite of strptime. So with this method we convert a string into a date time.
+
+→ You can also compare dates
+
+```python
+# 94_working_with_datetimes.py
+from datetime import datetime
+import time
+
+dt1 = datetime(2018,1,1)
+dt2 = datetime.now()
+print(dt2 > dt1)
+```
