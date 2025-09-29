@@ -692,3 +692,53 @@ dt1 = datetime(2018,1,1)
 dt2 = datetime.now()
 print(dt2 > dt1)
 ```
+
+# Working with Time Deltas
+
+→ To get time duration, timedelta is used.
+
+```python
+# 95_working_with_time_deltas.py
+from datetime import datetime, timedelta
+
+dt1 = datetime(2018, 1, 1)
+dt2 = datetime.now()
+
+duration = dt2 - dt1
+print(duration)
+```
+
+→ If you run the code above, you'll get the difference between those two dates.
+
+→ timedelta object has a few interesting attributes
+
+```python
+# 95_working_with_time_deltas.py
+print("days", duration.days)
+print("seconds", duration.seconds)
+```
+→ There is another method called total seconds. This is a method not an attribute.
+```python
+# 95_working_with_time_deltas.py
+print("total-seconds", duration.total_seconds())
+```
+
+→ The result of the above code will be durations represented as seconds.
+
+→ You can also add a time delta object to a date time object.
+
+```python
+# 95_working_with_time_deltas.py
+from datetime import datetime, timedelta
+dt1 = datetime(2018, 1, 1) + timedelta(1)
+print(dt1)
+```
+
+→ The result printed will be 2018-01-02
+
+→ Now you may be wondering what is 1 in timedelta(1). For clarity, you can set the keyword argument, for example:
+
+```python
+# 95_working_with_time_deltas.py
+timedelta(days=1, seconds=1)
+```
