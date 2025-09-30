@@ -742,3 +742,94 @@ print(dt1)
 # 95_working_with_time_deltas.py
 timedelta(days=1, seconds=1)
 ```
+
+# Generating Random Values
+
+In this section you'll learn to generate random values in python
+
+```python
+# 96_generating_random_values.py
+import random
+random.random()
+```
+
+→ random module has a method called random which is used to generate random numbers.
+
+```python
+# 96_generating_random_values.py
+print(random.random())
+```
+
+→ If you run this you will get a floating number.
+
+→ To get random number between 1 and 10
+
+```python
+# 96_generating_random_values.py
+print(random.randint(1,10))
+```
+
+→ Another method called choice that takes an array of numbers and randomly picks one of the numbers from it
+
+```python
+# 96_generating_random_values.py
+print(random.choice([1, 2, 3, 4]))
+```
+
+→ Another similar method called choices that selects multiple values from the array.
+
+```python
+# 96_generating_random_values.py
+print(random.choices([1, 2, 3, 4], k=2))
+```
+
+→ This returns the two random numbers from the original array
+
+→ With the help of this method, you can create a password
+
+```python
+# 96_generating_random_values.py
+print(random.choices("abcdefghi", k=4))
+```
+
+→ By running the above code you will get an array of randomly selected 4 letters.
+
+→ Now we should the random letters into a string
+
+```python
+# 96_generating_random_values.py
+print("".join(random.choices("abcdefghi", k=4)))
+```
+
+→ There is another module called strings which have many interesting attributes
+
+```python
+# 96_generating_random_values.py
+import string
+print(string.ascii_letters)
+```
+
+→ This returns a string that includes all the lower and upper case letters we also have:
+
+```python
+# 96_generating_random_values.py
+print(string.ascii_lowercase)
+print(string.ascii_uppercase)
+print(string.digits)
+```
+
+→ so while creating password you can use this method.
+
+```python
+# 96_generating_random_values.py
+print("".join(random.choices(string.ascii_letters + string.digits, k=4)))
+```
+
+→ we also have another method for shuffling an array.
+
+```python
+# 96_generating_random_values.py
+numbers = [1, 2, 3, 4]
+random.shuffle(numbers)
+print(numbers)
+```
