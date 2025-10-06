@@ -833,3 +833,24 @@ numbers = [1, 2, 3, 4]
 random.shuffle(numbers)
 print(numbers)
 ```
+
+# Opening the Browser
+
+→ In this chapter, you will learn how to open a web browser in a python script.
+
+→ This is useful if you're building an automation script that does a bunch of tasks.
+
+→ For example, if you want to build a script to deploy your website. For that, build your website locally on your development machine and then get deployed to a web server
+
+→ For building browser first you have to import webbrowser.
+
+→ This module has a method called open
+
+```python
+# 97_opening_the_browser.py
+import webbrowser
+print("Deployment completed")
+webbrowser.open("http://google.com")
+```
+
+→ when you run the program, first you will get the sentence printed and then the browser window opens.
