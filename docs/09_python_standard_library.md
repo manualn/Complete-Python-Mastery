@@ -854,3 +854,58 @@ webbrowser.open("http://google.com")
 ```
 
 → when you run the program, first you will get the sentence printed and then the browser window opens.
+
+# Sending emails
+
+Here you are going to learn how to send emails in python.
+
+→ This is very useful if you have a database of customers
+
+→ For this, you have to import various classes, 1 to create email messages and the other to connect with an smtp server for sending emails.
+
+```python
+# 98_sending_emails.py
+from email.mime.multipart import MIMEMultipart
+```
+
+→ In this package there is a subpackage called mime. Mime stands for multipurpose internet mail extension. This is the standard that defines the format for email messages
+
+→ In this package, there is another sub package that is multi part that exposes a class called mime multipart. With this you can send email messages that includes both html and plain text
+
+→ first step is to setup various headers
+
+```python
+# 98_sending_emails.py
+message = MIMEMultipart()
+message["from"] = "Mosh Hamedani"
+message["to"] = "testuser@codewithmosh.com"
+message["subject"] = "This is a test"
+```
+
+→ These headers are supported by MIME multi part objects
+
+→ It has a method called attach, which is mainly used to attach body.
+
+```python
+# 98_sending_emails.py
+from email.mime.text import MIMEText
+message.attach(MIMEText("Body"))
+```
+
+→ Now we need to send this using an smtp server, for that import smtplib
+
+→ This module has a method called SMTP, and here we should pass two keyword arguments
+
+```python
+# 98_sending_emails.py
+import smtplib
+smtplib.SMTP(host="smtp.gmail.com", port=587)
+```
+
+→ this value we set depends on the smtp server.
+
+```python
+# 98_sending_emails.py
+with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
+    smtp.ehlo()
+```
