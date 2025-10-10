@@ -909,3 +909,51 @@ smtplib.SMTP(host="smtp.gmail.com", port=587)
 with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
     smtp.ehlo()
 ```
+
+→ starttls is used to put the smtp connection in tls mode.
+
+→ tls stands for transport layer security.
+
+```python
+# 98_sending_emails.py
+smtp.starttls()
+smtp.login("testuser@codewithmosh.com", "today")
+```
+
+→ Now finally call smtp and there is a method called send_message and pass the email message object
+
+```python
+# 98_sending_emails.py
+smtp.send_message(message)
+print("sent...")
+```
+
+→ To send email, use the send_message method and pass the message object.
+
+```python
+# 98_sending_emails.py
+with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
+    smtp.ehlo()
+    smtp.starttls()
+    smtp.login("mosh@codewithmosh.com", "today")
+    smtp.send_message(message)
+    print("Sent...")
+```
+
+→ This is how you send emails in python.
+
+→ Now to attach an image to email
+
+```python
+# 98_sending_emails.py
+from email.mime.image import MIMEImage
+message.attach(MIMEImage())
+```
+
+→ pass the image and attach it to email object for that:
+
+```python
+# 98_sending_emails.py
+from pathlib import Path
+message.attach(MIMEImage(Path("mosh.png").read_bytes()))
+```
