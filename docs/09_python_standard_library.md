@@ -957,3 +957,55 @@ message.attach(MIMEImage())
 from pathlib import Path
 message.attach(MIMEImage(Path("mosh.png").read_bytes()))
 ```
+
+# Templates
+
+→ html is mainly used in building templates. html is the language of the web. webpages are used to present content
+
+→ Here you are going to learn how to create templates in python.
+
+→ Firstly create a template in your folder.
+
+→ Name the template according to the purpose.
+
+→ There is a simple technique to create an html template: press exclamation mark + tab
+
+→ when sending email, we don't need any text in the head section
+
+→ To define a parameter, start with a dollar sign and give that parameter a name.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+  Hi $name, this is our test email
+</body>
+</html>
+```
+
+→ Now go back to python code
+
+```python
+# 99_templates.py
+from string import Template
+from pathlib import Path
+
+template = Template(Path("template.html").read_text())
+message.attach (MIMEText(template.substitute(), "plain"))
+```
+
+→ Here you can pass two parameters for template. Now to make the code neat.
+
+```python
+# 99_templates.py
+body = template.substitute({"name": "John"})
+message.attach(MIMEText(body, "html"))
+```
+
+→ This email message is pretty simple, this doesn't use any html
+
+→ Now add a string around the name. Now run the application
+
+→ See one more time you can see the name is bold. This is the benefit of using html over plain text
+
