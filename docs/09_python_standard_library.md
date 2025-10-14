@@ -1009,3 +1009,30 @@ message.attach(MIMEText(body, "html"))
 
 → See one more time you can see the name is bold. This is the benefit of using html over plain text
 
+# Command line Arguments
+
+Here we will know more about python program that expands command line arguments. We can add additional arguments in a command line. For example, in a file name argument, you can add the name of a user, email, password etc.
+
+For that first import sys module. This module has an attribute called argv short for argument variables.
+
+```python
+# 100_command_line_arguments.py
+import sys
+print(sys.argv)
+```
+
+→ first item that will get printed is always the name of our python program
+
+→ All arguments are represented as separate items.
+
+→ If you want to get the length of array and if it is equal to one then the user has not supplied any arguments.
+
+```python
+# 100_command_line_arguments.py
+if len(sys.argv) == 1:
+    print("USAGE: python3 app.py <password>")
+else:
+    password = sys.argv[1]
+    print("password", password)
+```
+
