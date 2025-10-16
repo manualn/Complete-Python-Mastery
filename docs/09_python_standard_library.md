@@ -1036,3 +1036,61 @@ else:
     print("password", password)
 ```
 
+
+# Running External Programs
+
+In this session you are going to learn how to call external programs from your python scripts, basically how to run any of the operating system commands as well as external programs.
+
+with this module you can observe a child process
+```python
+# 101_running_external_programs.py
+    import subprocess
+```
+
+→ A process is basically an instance of a running program
+
+→ In the subprocess module we have a bunch of functions or methods like call, check-call, and check-output etc.
+```python
+# 101_running_external_programs.py
+    subprocess.call
+    subprocess.check_call
+    subprocess.check_output
+    subprocess.Popen
+```
+
+→ These methods are helper methods to create an instance of the
+
+popen class process.
+
+run method is used to run external program. The first argument of this method is an array of strings
+
+```python
+# 101_running_external_programs.py
+import subprocess
+subprocess.run(["ls", "-l"])
+```
+
+→ Now let's look at the return value of this method
+
+```python
+# 101_running_external_programs.py
+import subprocess
+result = subprocess.run(["ls","-l"])
+print(type(result))
+```
+
+→ If you run the program, you'll get an instance of this class
+
+→ Now rename it as completed
+
+```python
+# 101_running_external_programs.py
+import subprocess
+completed = subprocess.run(["ls","-l"])
+print(completed.args)
+print("args", completed.args)
+print("returncode", completed.returncode)
+print("stderr", completed.stderr)
+print("stdout", completed.stdout)
+```
+
