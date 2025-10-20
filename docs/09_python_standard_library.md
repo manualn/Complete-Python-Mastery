@@ -1094,3 +1094,72 @@ print("stderr", completed.stderr)
 print("stdout", completed.stdout)
 ```
 
+The run method takes quite a few keyword arguments and all of these have default values. Now you're going to use captured output. If you set this to true, when you run this program, the output will not be printed on the terminal
+
+```python
+# 101_running_external_programs_keyword_args.py
+import subprocess
+completed = subprocess.run(["ls", "-l"], capture_output=True)
+```
+
+→ now lets add more arguments
+
+```python
+# 101_running_external_programs_keyword_args.py
+import subprocess
+completed = subprocess.run(["ls", "-l"], capture_output=True, text=True)
+```
+
+→ now when you run the program, you'll no longer see a b prefix.
+
+→ create another file called other.py. This is a complicated python script that we will call as part of running our main script
+
+```python
+# other.py
+print("Here is a complicated script")
+```
+
+→ now to back to previous file
+
+```python
+# 101_running_external_programs_keyword_args.py
+import subprocess
+completed = subprocess.run(["python3", "other.py"], capture_output=True, text=True)
+```
+
+→ now you run this programs and you can see the other script is executed.
+
+```python
+# 101_running_external_programs_keyword_args.py
+import subprocess
+completed = subprocess.run(["false"], capture_output=True, text=True, check=True)
+```
+
+→ If you run this, you will get returncode as 1
+
+```python
+# 101_running_external_programs_keyword_args.py
+if completed.returncode != 0:
+    print(completed.stderr)
+```
+
+→ If you run this , the class will be in the subprocess module,
+
+To check for errors like this, you can wrap this code in a try block and then add the except clause
+
+```python
+# 101_running_external_programs_keyword_args.py
+import subprocess
+
+try:
+    completed = subprocess.run(["false"], capture_output=True, text=True, check=True)
+    print("args", completed.args)
+    print("returncode", completed.returncode)
+    print("stderr", completed.stderr)
+    print("stdout", completed.stdout)
+except subprocess.CalledProcessError as ex:
+    print(ex)
+```
+
+→ So this is all about running external programs in your python script
+
